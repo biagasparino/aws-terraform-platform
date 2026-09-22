@@ -1,0 +1,69 @@
+# Local development stack that mirrors the production topology:
+# api-1 / api-2 -> PostgreSQL + Redis
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: platform
+      POSTGRES_USER: platform_admin
+      POSTGRES_PASSWORD: change_me
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./app/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U platform_admin"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  api-1:
+    build: ./app/api-1
+    ports:
+      - "3001:3000"
+    environment:
+      PORT: 3000
+      SERVICE_NAME: api-1
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: platform
+      DB_USER: platform_admin
+      DB_PASSWORD: change_me
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+  api-2:
+    build: ./app/api-2
+    ports:
+      - "3002:3000"
+    environment:
+      PORT: 3000
+      SERVICE_NAME: api-2
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: platform
+      DB_USER: platform_admin
+      DB_PASSWORD: change_me
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+volumes:
+  pgdata:

@@ -1,0 +1,74 @@
+<svg viewBox="0 0 900 640" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4b5563"/>
+    </marker>
+    <linearGradient id="awsBox" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff7ed"/>
+      <stop offset="100%" stop-color="#ffedd5"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="640" fill="#0f172a"/>
+  <text x="450" y="34" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="700">AWS + Terraform Platform — Architecture</text>
+
+  <!-- Internet -->
+  <ellipse cx="450" cy="80" rx="70" ry="26" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <text x="450" y="86" text-anchor="middle" fill="#38bdf8" font-size="14" font-weight="600">Internet</text>
+
+  <!-- Route53 -->
+  <rect x="700" y="60" width="150" height="46" rx="8" fill="#312e81" stroke="#818cf8" stroke-width="1.5"/>
+  <text x="775" y="88" text-anchor="middle" fill="#e0e7ff" font-size="13">Route 53 (DNS)</text>
+  <line x1="700" y1="83" x2="520" y2="83" stroke="#818cf8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- VPC box -->
+  <rect x="60" y="130" width="780" height="470" rx="14" fill="url(#awsBox)" stroke="#fb923c" stroke-width="2"/>
+  <text x="80" y="156" fill="#9a3412" font-size="15" font-weight="700">AWS VPC (10.0.0.0/16)</text>
+
+  <!-- Public subnets -->
+  <rect x="90" y="176" width="720" height="120" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="105" y="196" fill="#1e3a8a" font-size="13" font-weight="700">Public Subnets (multi-AZ)</text>
+
+  <!-- ALB -->
+  <rect x="370" y="210" width="160" height="50" rx="8" fill="#1d4ed8"/>
+  <text x="450" y="240" text-anchor="middle" fill="white" font-size="13" font-weight="600">ALB / Ingress</text>
+  <line x1="450" y1="106" x2="450" y2="210" stroke="#4b5563" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- NAT gateway -->
+  <rect x="620" y="210" width="140" height="50" rx="8" fill="#2563eb"/>
+  <text x="690" y="240" text-anchor="middle" fill="white" font-size="12">NAT Gateway</text>
+
+  <!-- Private subnets -->
+  <rect x="90" y="316" width="720" height="260" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="105" y="336" fill="#14532d" font-size="13" font-weight="700">Private Subnets (multi-AZ)</text>
+
+  <!-- EKS box -->
+  <rect x="115" y="352" width="670" height="120" rx="10" fill="#052e16" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="130" y="372" fill="#bbf7d0" font-size="13" font-weight="700">Amazon EKS Cluster (Kubernetes)</text>
+
+  <rect x="180" y="392" width="150" height="56" rx="8" fill="#15803d"/>
+  <text x="255" y="424" text-anchor="middle" fill="white" font-size="13" font-weight="600">API-1 (pod)</text>
+
+  <rect x="560" y="392" width="150" height="56" rx="8" fill="#15803d"/>
+  <text x="635" y="424" text-anchor="middle" fill="white" font-size="13" font-weight="600">API-2 (pod)</text>
+
+  <line x1="450" y1="260" x2="255" y2="392" stroke="#4b5563" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="450" y1="260" x2="635" y2="392" stroke="#4b5563" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- RDS -->
+  <rect x="250" y="500" width="180" height="56" rx="8" fill="#7c2d12"/>
+  <text x="340" y="526" text-anchor="middle" fill="white" font-size="13" font-weight="600">RDS PostgreSQL</text>
+  <text x="340" y="544" text-anchor="middle" fill="#fed7aa" font-size="10">Multi-AZ</text>
+
+  <!-- Redis -->
+  <rect x="470" y="500" width="180" height="56" rx="8" fill="#7f1d1d"/>
+  <text x="560" y="526" text-anchor="middle" fill="white" font-size="13" font-weight="600">ElastiCache Redis</text>
+
+  <line x1="255" y1="448" x2="330" y2="500" stroke="#4b5563" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="635" y1="448" x2="560" y2="500" stroke="#4b5563" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="340" y1="528" x2="470" y2="528" stroke="#4b5563" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- S3 + IAM side notes -->
+  <rect x="90" y="592" width="200" height="0" fill="none"/>
+  <text x="105" y="596" fill="#334155" font-size="11">S3 (state, assets, logs) · IAM (roles/policies) · Security Groups · Terraform Remote State (S3 + DynamoDB)</text>
+</svg>

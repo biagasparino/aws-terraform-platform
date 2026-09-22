@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: platform-config
+data:
+  DB_HOST: "REPLACED_BY_KUSTOMIZE_OVERLAY"
+  DB_PORT: "5432"
+  DB_NAME: "platform"
+  REDIS_HOST: "REPLACED_BY_KUSTOMIZE_OVERLAY"
+  REDIS_PORT: "6379"

@@ -1,0 +1,3 @@
+# Requires review before Terraform can be merged/applied
+/terraform/  @your-github-username
+/app/        @your-github-username

@@ -1,0 +1,28 @@
+require('dotenv').config();
+const express = require('express');
+const healthRouter = require('./routes/health');
+const itemsRouter = require('./routes/items');
+
+const app = express();
+app.use(express.json());
+app.use(healthRouter);
+app.use(itemsRouter);
+
+const SERVICE_NAME = process.env.SERVICE_NAME || 'api-1';
+
+app.get('/', (_req, res) => {
+  res.json({ service: SERVICE_NAME, message: 'API-1 is running' });
+});
+
+// Centralized error handler: keeps stack traces out of client responses
+app.use((err, _req, res, _next) => {
+  console.error('Unhandled error:', err);
+  res.status(500).json({ error: 'Internal server error' });
+});
+
+module.exports = app;
+
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`${SERVICE_NAME} listening on port ${PORT}`));
+}

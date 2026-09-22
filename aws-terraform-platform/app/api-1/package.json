@@ -1,0 +1,22 @@
+{
+  "name": "api-1",
+  "version": "1.0.0",
+  "description": "Sample microservice (api-1) for the AWS + Terraform platform demo",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "lint": "eslint src test",
+    "test": "node --test test/"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.11.5",
+    "redis": "^4.6.13",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "eslint": "^9.5.0"
+  },
+  "license": "MIT"
+}

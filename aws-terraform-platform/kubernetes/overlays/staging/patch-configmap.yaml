@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: platform-config
+data:
+  DB_HOST: "platform-staging-postgres.xxxxxxxx.us-east-1.rds.amazonaws.com"
+  REDIS_HOST: "platform-staging-redis.xxxxxx.cache.amazonaws.com"
