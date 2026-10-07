@@ -8,11 +8,11 @@
 
 🇺🇸 **Read this in English: [README.md](README.md)**
 
-Uma infraestrutura AWS completa e totalmente modular — construída inteiramente com Terraform — que provisiona uma VPC, um cluster EKS, PostgreSQL, cache Redis e um load balancer com ingress para duas APIs de exemplo. As mudanças de infraestrutura passam por um pipeline GitOps de verdade: **plan → review → apply**, nunca um `terraform apply` manual no notebook de alguém.
+Uma infraestrutura AWS completa e totalmente modular, construída inteiramente com Terraform, que provisiona uma VPC, um cluster EKS, PostgreSQL, cache Redis e um load balancer com ingress para duas APIs de exemplo. As mudanças de infraestrutura passam por um pipeline GitOps de verdade: **plan → review → apply**, nunca um `terraform apply` manual no notebook de alguém.
 
 ## O que este projeto prova
 
-Este repositório existe para demonstrar, na prática, domínio da stack que aparece em praticamente toda vaga de infraestrutura/DevOps atualmente: **módulos Terraform, remote state, workspaces/ambientes e networking & IAM na AWS** — nada de exemplo de brinquedo, e sim uma estrutura que poderia ser entregue a um time amanhã.
+**módulos Terraform, remote state, workspaces/ambientes e networking & IAM na AWS** 
 
 ## Arquitetura
 
