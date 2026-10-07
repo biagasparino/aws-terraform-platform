@@ -8,11 +8,11 @@
 
 🇧🇷 **Leia isto em português: [README.pt-br.md](README.pt-br.md)**
 
-A production-shaped, fully modular AWS infrastructure — built entirely with Terraform — that provisions a VPC, an EKS cluster, PostgreSQL, Redis-compatible caching, and a load-balanced ingress for two sample microservices. Infrastructure changes ship through a real GitOps pipeline: **plan → review → apply**, never a manual `terraform apply` on someone's laptop.
+A production-shaped, fully modular AWS infrastructure, built entirely with Terraform, that provisions a VPC, an EKS cluster, PostgreSQL, Redis-compatible caching, and a load-balanced ingress for two sample microservices. Infrastructure changes ship through a real GitOps pipeline: **plan → review → apply**, never a manual `terraform apply` on someone's laptop.
 
 ## What this project demonstrates
 
-This repository exists to prove hands-on, real-world skill with the stack that shows up in almost every infrastructure/DevOps job posting today: **Terraform modules, remote state, workspaces/environments, and AWS networking & IAM** — not toy examples, but a layout you could hand to a team tomorrow.
+**Terraform modules, remote state, workspaces/environments, and AWS networking & IAM** 
 
 ## Architecture
 
